@@ -1,6 +1,8 @@
 import pygame,sys,random
 from pygame.locals import*
 pygame.init()
+bg_surface=pygame.image.load('image_audio/space1.png')
+bg_surface=pygame.transform.scale(bg_surface,(1000,660))
 clock = pygame.time.Clock()
 screen_width =1000
 screen_height = 660
@@ -112,13 +114,13 @@ while True:
                 player_speed-=7
             if event.key == pygame.K_UP:
                 player_speed+=7
-
+    screen.blit(bg_surface,(0,0))
     ball_animation()
     player_moveLimit()
     opponent_movement()
     # opponent_movement()
     #Drawing
-    screen.fill(bg_color)
+    # screen.fill(bg_color)
     pygame.draw.rect(screen,light_grey,player)
     pygame.draw.rect(screen,light_grey,opponent)
     pygame.draw.ellipse(screen,light_grey,ball)
@@ -131,7 +133,7 @@ while True:
     screen.blit(player_text,(520,300))
     opponent_text=game_font.render(f"{opponent_score}",False,light_grey)
     screen.blit(opponent_text,(467,300))
-   
+    
    
     pygame.display.flip()
     clock.tick(60)
